@@ -47,4 +47,13 @@ public class CabInvoiceGeneratorTest {
 		InvoiceDescription expectedDescription = new InvoiceDescription(2, 30.0, 2.0);
 		Assert.assertEquals(expectedDescription, actualDescription);
 	}
+	@Test
+	public void givenUserId_shouldReturn_invoiceDescriptionList() {
+		String userId = "abc@gmail.com";
+		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+		invoiceGenerator.addRides(userId, rides);
+		InvoiceDescription actualDescription = invoiceGenerator.getInvoiceDescription(userId);
+		InvoiceDescription expectedDescription = new InvoiceDescription(0, 30.0, 2.0);
+		Assert.assertEquals(expectedDescription, actualDescription);
+	}
 }
